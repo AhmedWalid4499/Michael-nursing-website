@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pflege Pfad — Nursing Master's & Scholarships in Germany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12303a;          /* deep clinical teal-navy */
+  --paper:#f6fbfb;        /* surgical white with a breath of mint */
+  --card:#ffffff;
+  --teal:#0e7d7d;         /* scrubs teal */
+  --teal-soft:#dff0ef;
+  --amber:#e0a418;        /* DAAD-ish signal amber */
+  --line:#d3e3e2;
+  --muted:#5b7478;
+  --red:#c0392b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Public Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+header{border-bottom:2px solid var(--ink);padding:34px 20px 26px;background:var(--card)}
+.wrap{max-width:960px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px}
+h1{font-family:'Bitter',serif;font-weight:800;font-size:clamp(28px,5vw,44px);line-height:1.1}
+h1 .de{color:var(--teal)}
+.sub{margin-top:10px;color:var(--muted);max-width:640px}
+/* ECG signature */
+.ecg{height:44px;margin-top:18px;overflow:hidden}
+.ecg svg{width:100%;height:100%}
+.ecg path{fill:none;stroke:var(--teal);stroke-width:2;stroke-dasharray:1200;stroke-dashoffset:1200}
+.loading .ecg path{animation:pulse 2.2s linear infinite}
+@keyframes pulse{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.loading .ecg path{animation:none;stroke-dashoffset:0}}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;width:100%}
+.chip{border:1px solid var(--line);background:var(--paper);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+#refresh{margin-left:auto;background:var(--teal);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer}
+#refresh:disabled{opacity:.6;cursor:wait}
+#status{font-size:12px;color:var(--muted);width:100%}
+main{padding:26px 20px 60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.card:hover{border-color:var(--teal)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px}
+.tag.sch{background:#fdf3d7;color:#8a6410}
+.tag.prog{background:var(--teal-soft);color:var(--teal)}
+.tag.de{background:#12303a;color:#fff}
+.card h3{font-family:'Bitter',serif;font-size:17px;line-height:1.3}
+.org{font-size:13px;color:var(--muted);font-weight:600}
+.desc{font-size:14px}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px}
+.deadline{color:var(--red);font-weight:700}
+.card a{color:var(--teal);font-weight:700;text-decoration:none}
+.card a:hover{text-decoration:underline}
+.note{margin-top:26px;font-size:13px;color:var(--muted);border-left:3px solid var(--amber);padding:10px 14px;background:#fffdf4}
+.skeleton{height:180px;border-radius:12px;background:linear-gradient(90deg,var(--teal-soft),#fff,var(--teal-soft));background-size:200% 100%;animation:sh 1.4s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+</style>
+</head>
+<body class="loading">
+<header>
+  <div class="wrap">
+    <div class="eyebrow">For a nurse, updated live · Für Pflegekräfte</div>
+    <h1>Nursing master's & scholarships <span class="de">in Germany</span> and Europe</h1>
+    <p class="sub">Every time this page opens, it searches the web for current master's programs (Pflegewissenschaft, Nursing Science, Public Health) and funding — DAAD, Erasmus Mundus, foundations — and lists what's open right now.</p>
+    <div class="ecg" aria-hidden="true"><svg viewBox="0 0 900 44" preserveAspectRatio="none"><path d="M0 22 H120 l14 -12 14 24 10 -18 8 6 H320 l12 -16 14 28 10 -14 H560 l14 -10 12 22 10 -14 8 4 H760 l12 -14 14 24 10 -12 H900"/></svg></div>
+  </div>
+</header>
+
+<div class="bar"><div class="wrap">
+  <button class="chip on" data-f="all">All</button>
+  <button class="chip" data-f="scholarship">Scholarships</button>
+  <button class="chip" data-f="program">Master's programs</button>
+  <button class="chip" data-f="germany">Germany only</button>
+  <button id="refresh">↻ Search again</button>
+  <span id="status">Searching the web for current opportunities…</span>
+</div></div>
+
+<main><div class="wrap">
+  <div class="grid" id="grid">
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+  </div>
+  <div class="note"><strong>Always verify on the official site.</strong> Deadlines and requirements change. Core anchors to check regardless of what's listed: <a href="https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/" target="_blank" rel="noopener">DAAD scholarship database</a>, <a href="https://www2.daad.de/deutschland/studienangebote/international-programmes/en/" target="_blank" rel="noopener">DAAD international programmes</a>, and <a href="https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en" target="_blank" rel="noopener">Erasmus Mundus catalogue</a>. Most German public universities charge no tuition — often only a semester fee of €150–400.</div>
+</div></main>
+
+<script>
+const grid = document.getElementById('grid');
+const statusEl = document.getElementById('status');
+const refreshBtn = document.getElementById('refresh');
+let items = [], filter = 'all';
+
+const FALLBACK = [
+ {name:"DAAD EPOS — Fully Funded Postgraduate Scholarships",org:"DAAD",type:"scholarship",country:"Germany",desc:"Full scholarship (~€992/month stipend, insurance, travel) for professionals from developing countries with a bachelor's + 2 years work experience — nurses are explicitly eligible. Apply directly to a course on the EPOS list, not to DAAD.",deadline:"Per course — most Aug 2026 to Mar 2027",url:"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"},
+ {name:"MSc International Health (MScIH) — application & admission",org:"Charité – Universitätsmedizin Berlin",type:"program",country:"Germany",desc:"Top-ranked programme that explicitly welcomes nurses. Taught in English. EPOS-scholarship eligible. Regular admission: 1 Jan – 31 Mar; rolling until 30 Aug; next EPOS scholarship window: 1 Aug – 15 Oct 2026 for Sept 2027 intake.",deadline:"31 Mar (regular) / 15 Oct 2026 (EPOS)",url:"https://internationalhealth.charite.de/en/application_admission"},
+ {name:"DAAD International Programmes database — nursing & public health search",org:"DAAD",type:"program",country:"Germany",desc:"Official searchable database of all English-taught master's at German universities. Filter by 'Health sciences / Nursing' to see every current programme with live deadlines and links.",deadline:"Live database — always current",url:"https://www2.daad.de/deutschland/studienangebote/international-programmes/en/"},
+ {name:"DAAD Scholarship Database",org:"DAAD",type:"scholarship",country:"Germany",desc:"The official master list of every scholarship open to international students in Germany. Enter your country of origin + 'Health sciences' to see exactly what you qualify for right now.",deadline:"Live database — always current",url:"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/"},
+ {name:"Erasmus Mundus Joint Masters Catalogue (health programmes)",org:"European Commission",type:"scholarship",country:"Europe",desc:"Fully funded joint master's across 2–3 European countries — stipend + tuition covered. Search the official catalogue for public health, healthcare and nursing-related programmes.",deadline:"Most programmes close Dec–Feb",url:"https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"},
+ {name:"Heinrich Böll Foundation Scholarships",org:"Heinrich-Böll-Stiftung",type:"scholarship",country:"Germany",desc:"Stipends for international master's students at German universities, all subjects including health; values social and civic engagement.",deadline:"1 March / 1 September",url:"https://www.boell.de/en/scholarships"},
+ {name:"Konrad-Adenauer-Stiftung Scholarships",org:"KAS",type:"scholarship",country:"Germany",desc:"Monthly stipend for international students admitted to German master's programmes, all fields including health sciences.",deadline:"Usually 15 July",url:"https://www.kas.de/en/web/begabtenfoerderung-und-kultur/auslaenderfoerderung"},
+ {name:"Deutschlandstipendium",org:"German universities (BMBF)",type:"scholarship",country:"Germany",desc:"€300/month merit scholarship at most German universities once enrolled — apply through your university after admission.",deadline:"Per university",url:"https://www.deutschlandstipendium.de/deutschlandstipendium/de/english/english_node.html"}
+];
+
+function render(){
+  const list = items.filter(i=>{
+    if(filter==='all') return true;
+    if(filter==='germany') return /german/i.test(i.country);
+    return i.type===filter;
+  });
+  grid.innerHTML = list.length ? '' : '<p>No results for this filter — try another.</p>';
+  list.forEach(i=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML=`<div class="tags">
+        <span class="tag ${i.type==='scholarship'?'sch':'prog'}">${i.type==='scholarship'?'Scholarship':"Master's"}</span>
+        ${/german/i.test(i.country)?'<span class="tag de">Germany</span>':'<span class="tag prog">'+esc(i.country)+'</span>'}
+      </div>
+      <h3>${esc(i.name)}</h3>
+      <div class="org">${esc(i.org)}</div>
+      <p class="desc">${esc(i.desc)}</p>
+      <div class="meta"><span class="deadline">⏰ ${esc(i.deadline||'See site')}</span>
+      <a href="${encodeURI(i.url||'#')}" target="_blank" rel="noopener">Open ↗</a></div>`;
+    grid.appendChild(c);
+  });
+}
+function esc(s){const d=document.createElement('div');d.textContent=s??'';return d.innerHTML;}
+
+async function fetchLive(){
+  document.body.classList.add('loading');
+  refreshBtn.disabled=true;
+  statusEl.textContent='Searching the web for current opportunities…';
+  try{
+    const r = await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-6",max_tokens:1000,
+        tools:[{type:"web_search_20250305",name:"web_search"}],
+        messages:[{role:"user",content:`Today is ${new Date().toDateString()}. Search the web for CURRENTLY OPEN or upcoming (next 6 months) opportunities for an internationally trained NURSE seeking a master's degree in GERMANY (priority) or elsewhere in Europe: nursing science / Pflegewissenschaft, public health, healthcare management master's programs, and scholarships (DAAD, Erasmus Mundus, foundations). Respond with ONLY a JSON array (no markdown, no prose) of 8-12 objects with keys: name, org, type ("scholarship" or "program"), country, desc (1-2 sentences incl. funding amount or tuition status and language requirement if known), deadline (short string), url (official page). STRICT URL RULE: only use URLs that appear verbatim in your search results and point to the official university/DAAD/EU page for that exact opportunity — never guess, shorten, or construct a URL, and never use news/aggregator sites. If you cannot verify a direct official URL for an item, exclude that item. Only include opportunities whose application is currently open or opens within 6 months. Prefer Germany; include tuition-free public universities.`}]
+      })
+    });
+    const data = await r.json();
+    const text = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    const m = text.match(/\[[\s\S]*\]/);
+    const parsed = JSON.parse(m ? m[0] : text.replace(/```json|```/g,'').trim());
+    if(Array.isArray(parsed)&&parsed.length){
+      items=parsed;
+      statusEl.textContent=`✔ Live results from a web search — ${new Date().toLocaleString()}. Verify deadlines on official pages.`;
+    } else throw new Error('empty');
+  }catch(e){
+    items=FALLBACK;
+    statusEl.textContent='Live search unavailable right now — showing a verified starter list. Tap “Search again” to retry.';
+  }
+  document.body.classList.remove('loading');
+  refreshBtn.disabled=false;
+  render();
+}
+
+document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  ch.classList.add('on');filter=ch.dataset.f;render();
+}));
+refreshBtn.addEventListener('click',fetchLive);
+fetchLive();
+</script>
+</body>
+</html>
